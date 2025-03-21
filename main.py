@@ -1,8 +1,15 @@
 from pymongo import MongoClient
 import json
+import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+mongo_uri = os.getenv("MONGO_URI")
 
 # Enter your MongoDB connection URI and database name
-connection_string = "mongodb+srv://hopecommunitywelfare16:Y8N7DYyCgnrs3D4L@cluster0.k3pvc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+connection_string = mongo_uri
 database_name = "Customers"  
 
 try:
