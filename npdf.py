@@ -44,6 +44,8 @@ def generate_pdf(descendants, root_user, output_path):
 
     # Add Title
     pdf.cell(200, 10, txt=f"Downline Members of {root_name}", ln=True, align="C")
+    pdf.cell(200, 10, txt=f"Total Members: {len(descendants)}", ln=True, align="C")
+    
     pdf.ln(10)
 
     # Table Header
@@ -68,7 +70,7 @@ def generate_pdf(descendants, root_user, output_path):
     print(f"PDF saved as {output_path}")
 
 if __name__ == "__main__":
-    root_customer_id = "SS6113393925"  # Change this as needed
+    root_customer_id = "SS1587977060"  # Change this as needed
 
     # Fetch root user details
     root_user = collection.find_one({"customerID": root_customer_id})

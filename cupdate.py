@@ -70,4 +70,14 @@ if __name__ == "__main__":
         # Update and print each downline user
         for member in downline:
             updated_member = update_children_ids(member["customerID"])
+
+            # 👉 Correct the referenceCustomer field
+            reference = collection.find_one({"customerID": updated_member.get("referenceId")})
+            reference_name = reference.get("name") if reference else ""
+            collection.update_one(
+                {"customerID": updated_member["customerID"]},
+                {"$set": {"referenceCustomer": reference_name}}
+            )
+            updated_member["referenceCustomer"] = reference_name  # for printing
+
             print(f"- {updated_member.get('customerID')} | {updated_member.get('name')} | {updated_member.get('mobile')} | {updated_member.get('place')} | {updated_member.get('referenceId')} | {updated_member.get('referenceCustomer')} | {updated_member.get('child1')} | {updated_member.get('child2')}")
