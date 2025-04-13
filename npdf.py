@@ -70,7 +70,7 @@ def generate_pdf(descendants, root_user, output_path):
     print(f"PDF saved as {output_path}")
 
 if __name__ == "__main__":
-    root_customer_id = "SS1587977060"  # Change this as needed
+    root_customer_id = "SS9738345674"  # Change this as needed
 
     # Fetch root user details
     root_user = collection.find_one({"customerID": root_customer_id})
