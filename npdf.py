@@ -44,6 +44,7 @@ def generate_pdf(descendants, root_user, output_path):
 
     # Add Title
     pdf.cell(200, 10, txt=f"Downline Members of {root_name}", ln=True, align="C")
+    pdf.cell(200, 10, txt=f"ID: {root_customer_id}", ln=True, align="C")
     pdf.cell(200, 10, txt=f"Total Members: {len(descendants)}", ln=True, align="C")
     
     pdf.ln(10)
@@ -70,7 +71,7 @@ def generate_pdf(descendants, root_user, output_path):
     print(f"PDF saved as {output_path}")
 
 if __name__ == "__main__":
-    root_customer_id = "SS9738345674"  # Change this as needed
+    root_customer_id = input("Enter the root customer ID: ")
 
     # Fetch root user details
     root_user = collection.find_one({"customerID": root_customer_id})
@@ -79,5 +80,5 @@ if __name__ == "__main__":
         print(f"No user found with customer ID: {root_customer_id}")
     else:
         descendants = find_descendants(root_customer_id)
-        output_pdf_path = f"downline_{root_customer_id}.pdf"
+        output_pdf_path = f"Team_{root_customer_id}.pdf"
         generate_pdf(descendants, root_user, output_pdf_path)
