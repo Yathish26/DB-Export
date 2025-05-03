@@ -33,7 +33,7 @@ def find_descendants(customer_id):
         current_id = queue.pop(0)
         for user in collection.find({"referenceId": current_id}):
             descendants.append(user)
-            queue.append(user.get("customerID"))
+            queue.append(user.get("customerID"))    
 
     return descendants
 
